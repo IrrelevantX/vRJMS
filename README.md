@@ -1,3 +1,9 @@
+<p align="center">
+<a href="https://github.com/nikosT/vRJMS">
+<img src="https://github.com/nikosT/vRJMS/blob/main/vrjms.png" width="40%"/>
+</a>
+</p>
+
 ## Description
 A Python implementation of an adjustable resource manager for MPI applications of a computer cluster. It consists of:
   - A *scheduling* module supporting two algorithms:
