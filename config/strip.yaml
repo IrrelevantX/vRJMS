@@ -1,0 +1,22 @@
+Version: 1.0
+
+Applications:
+  Path: /home/users/akourtis/test/NPB3.4/NPB3.4-MPI/bin
+  Queue: /home/users/akourtis/git_rmanager/queue
+  Heatmap: /home/users/akourtis/git_rmanager/heatmap
+
+Scheduling:
+  Algorithm: FCFS
+  Backfilling: 0
+
+Nodes: 2
+
+Sockets: 2
+Cores: 4
+
+Allocation:
+  Policy: strip
+
+Log: /home/users/akourtis/git_rmanager/log/strip/fcfs
+
+State: /home/users/akourtis/git_rmanager/state

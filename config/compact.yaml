@@ -1,0 +1,33 @@
+Version: 1.0
+
+Applications:
+  Path: /home/users/akourtis/test/NPB3.4/NPB3.4-MPI/bin
+  Queue: /home/users/akourtis/git_rmanager/queue
+  Heatmap: /home/users/akourtis/git_rmanager/heatmap
+
+Scheduling:
+  Algorithm: FCFS
+  Backfilling: 0
+
+Nodes: 8
+
+Sockets: 2
+Cores: 4
+
+Allocation:
+  Policy: compact
+
+Selection:
+  Variables: cores, sockets, nodes
+  LambdaLocation: config.SelectionFunc
+  LambdaName : a
+
+Export:
+  ExportModuleFolder : export_modules
+  Module : NPB
+
+AlreadyRun : False
+
+Log: /home/users/akourtis/git_rmanager/log/compact/fcfs
+
+State: /home/users/akourtis/git_rmanager/state
