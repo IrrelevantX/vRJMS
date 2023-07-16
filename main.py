@@ -78,7 +78,6 @@ if __name__ == '__main__':
             TimeElapsed = time.time()
             job_stat = manager.scheduler(config['Allocation']['Policy'], algorithms[config['Scheduling']['Algorithm']], config['Scheduling']['Backfilling'])
             TimeElapsed = time.time() - TimeElapsed
-            print(job_stat)
             print('{}({}):'.format(config['Scheduling']['Algorithm'],config['Scheduling']['Backfilling']), end = ' ')
             try:
                 print(stats.avgs(config['Log'], shared.jobs))
@@ -89,9 +88,10 @@ if __name__ == '__main__':
                 package = config['Export']['ExportModuleFolder']+'.'+config['Export']['Module'] + "_module"
                 name = config['Export']['Module']
                 export = getattr(__import__(package, fromlist=[name]), name)
-                print(job_stat[0])
                 export(job_stat,config['Log'])
-                print(job_stat[0])
             except:
                 pass
-            x = Plot(job_stat,config['Log'])
+            package = config['SpeedUp']['File']
+            name = config['SpeedUp']['Name']
+            SpeedUp = getattr(__import__(package, fromlist=[name]), name)
+            x = Plot(job_stat,config['Log'],SpeedUp)

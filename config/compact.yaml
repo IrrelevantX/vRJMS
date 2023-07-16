@@ -26,6 +26,9 @@ Export:
   ExportModuleFolder : export_modules
   Module : NPB
 
+SpeedUp:
+  File: config.SCIrouter
+  Name: SpeedUp
 AlreadyRun : False
 
 Log: /home/users/akourtis/git_rmanager/log/compact/fcfs

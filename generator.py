@@ -26,19 +26,19 @@ def rewind(num):
 def generator(num):
     if os.path.exists("queue"):
         return
-    #apps = ['bt','cg','ep','ft','is','lu','mg','sp'] #ft is out due to problems with that specific job
-    apps = ['bt','cg','ep','is','lu','mg','sp']
+    apps = ['bt','cg','ep','ft','is','lu','mg','sp'] #ft is out due to problems with that specific job
+    #apps = ['bt','cg','ep','is','lu','mg','sp']
     procs = [2**i for i in range(2,7)]
     classes = ['B']
     walltime = {
-            'bt':[550, 230, 230, 80, 90, 80, 80],
-            'cg':[120, 90, 70, 60, 90, 150, 120],
-            'ep':[70, 40, 20, 10, 5, 3, 2],
-            'ft':[100, 70, 60, 50, 60, 50, 80],
-            'is':[10, 5, 5, 5, 10, 20, 10],
-            'lu':[260, 170, 120, 60, 45, 50, 50],
-            'mg':[20, 20, 10, 10, 10, 5, 5],
-            'sp':[640, 470, 470, 160, 160, 130, 130]
+            'bt':[550, 230, 230, 80, 90, 80, 80, 80, 80],
+            'cg':[120, 90, 70, 60, 90, 150, 120, 120, 120],
+            'ep':[70, 40, 20, 10, 5, 3, 2, 2, 2],
+            'ft':[100, 70, 60, 50, 60, 50, 80, 80, 80],
+            'is':[10, 5, 5, 5, 10, 20, 10, 10, 10],
+            'lu':[260, 170, 120, 60, 45, 50, 50, 50, 50],
+            'mg':[20, 20, 10, 10, 10, 5, 5, 5, 5],
+            'sp':[640, 470, 470, 160, 160, 130, 130, 130, 130]
             }
 
     r = open('rewind','a')
@@ -47,9 +47,8 @@ def generator(num):
     #make the specific queue#
     #########################
     if 0:
-        print('In')
-        pproccs = [8,16,32]
-        for c in ['A','B','C']:
+        pproccs = [128,256,512]
+        for c in ['D']:
             for i in pproccs:
                 for j in apps:
                     #c = random.choice(classes)
@@ -96,7 +95,6 @@ def generator(num):
                     w = walltime[app][int(math.log(p,2))-1]
                     f.write(app + '.' + c + '.' + 'x' + ' ' + str(p) + ' ' + str(w) + ' ' + str(0) + ' ' + str(0) + ' ' + str(random.randint(0,1)) +'\n')
                     if app == 'sp':
-                        print('reached')
                         break
                     if kk == 32:
                         f.write(app_comp + '.' + c + '.' + 'x' + ' ' + str(64) + ' ' + str(w_comp) + ' ' + str(0) + ' ' + str(1) + ' ' + str(random.randint(0,1)) +'\n')
