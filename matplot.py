@@ -81,36 +81,18 @@ def Plot(jobs,logdir,SpeedUp):
     apps = ['bt','cg','ep','ft','is','lu','mg','sp']
     for kk in apps:
         dix = {}
-        # x4=[]
-        # x8=[]
-        # x16=[]
-        # x32=[]
-        # x64=[]
         name = kk
         jobs = sorted(jobs, key=lambda x:x.id ,reverse = False)
         for i in jobs:
             if i.name.find(name) != -1:
-                # if int(i.procs) == 4:
-                #     x4.append(float(i.time))
-                # elif int(i.procs) == 8:
-                #     x8.append(float(i.time))
-                # elif int(i.procs) == 16:
-                #     x16.append(float(i.time))
-                # elif int(i.procs) == 32:
-                #     x32.append(float(i.time))
-                # elif int(i.procs) == 64:
-                #     x64.append(float(i.time))
                 if int(i.procs) not in list(dix.keys()):
                     dix[int(i.procs)] = []
                 dix[int(i.procs)].append(float(i.time))
-        # if x4 == [] and x8 ==[] and x16 == [] and x32 == [] and x64 == []:
-        #     continue
         if len(list(dix.keys())) == 0:
             continue
         pltid += 1
         plt.figure(pltid)
         plt.title(name + " box plot times")
-        #plt.boxplot([x4,x8,x16,x32],patch_artist=True,labels=['4','8','16','32'])
         plt.boxplot([dix[i] for i in list(dix.keys())],patch_artist=True,labels=list(dix.keys()))
         plt.savefig(logdir+'/{}.png'.format(name + "_BoxPlot"))
 
@@ -167,113 +149,7 @@ def Plot(jobs,logdir,SpeedUp):
     ####################
     ## SPEED-UP CHART ##
     ####################
-    
-    # x = {
-    #     'A' : {
-    #             8 : {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []},
-    #             16: {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []},
-    #             32: {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []}
-    #                 },
-    #     'B' : {
-    #             8 : {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []},
-    #             16: {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []},
-    #             32: {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []}
-    #                 },
-    #         'C' : {
-    #             8 : {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []},
-    #             16: {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []},
-    #             32: {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []}
-    #                 },
-    #         'D' : {
-    #             8 : {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []},
-    #             16: {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []},
-    #             32: {'bt' : [],
-    #                 'cg' : [],
-    #                 'ep' : [],
-    #                 'ft' : [],
-    #                 'is' : [],
-    #                 'lu' : [],
-    #                 'mg' : [],
-    #                 'sp' : []}
-    #                 }
-    # }
+
     General_X = []
     General_Y = []
     x = {}
@@ -308,7 +184,7 @@ def Plot(jobs,logdir,SpeedUp):
                 General_X.append(elem)
                 General_Y.append(labels[count])
     # GENERAL SPEEDUP
-     if General_X != [] and General_Y != []:
+    if General_X != [] and General_Y != []:
         pltid += 1
         plt.figure(pltid)
         plt.title('General SpeedUp')
