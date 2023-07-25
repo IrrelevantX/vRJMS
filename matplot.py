@@ -308,9 +308,10 @@ def Plot(jobs,logdir,SpeedUp):
                 General_X.append(elem)
                 General_Y.append(labels[count])
     # GENERAL SPEEDUP
-    pltid += 1
-    plt.figure(pltid)
-    plt.title('General SpeedUp')
-    plt.boxplot(General_X,patch_artist=True,labels=General_Y)
-    plt.savefig(logdir+'/{}.png'.format('General_Speed_up'))
+     if General_X != [] and General_Y != []:
+        pltid += 1
+        plt.figure(pltid)
+        plt.title('General SpeedUp')
+        plt.boxplot(General_X,patch_artist=True,labels=General_Y)
+        plt.savefig(logdir+'/{}.png'.format('General_Speed_up'))
     return 1
